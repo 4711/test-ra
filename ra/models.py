@@ -46,7 +46,7 @@ class ActualData(models.Model):
     previd = models.IntegerField(null=True, db_column='PrevID', blank=True) # Field name made lowercase.
 
     def __unicode__(self):
-        return "#%s: %s" % (self.id, self.modulid)
+        return "#%s: %s" % (self.id, self.modulid.name)
 
     class Meta:
         db_table = u'actual_data'
@@ -443,6 +443,10 @@ class Modul(models.Model):
     lastmodification = models.DateTimeField(null=True, db_column='LastModification', blank=True) # Field name made lowercase.
     lastmodificationby = models.CharField(max_length=60, db_column='LastModificationBy', blank=True) # Field name made lowercase.
     dateofcreation = models.DateTimeField(db_column='DateOfCreation') # Field name made lowercase.
+
+    def __unicode__(self):
+        return "#%s: %s" % (self.modulid, self.name)
+               
     class Meta:
         db_table = u'modul'
 
